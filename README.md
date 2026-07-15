@@ -55,7 +55,7 @@ Therefore, a model could be 99.83% accurate and still be useless.
 
 
 # FastAPI Backend and React Frontend
-###Key features:
+### Key features:
 - I used an API because the model trains once and gets served, rather than retraining on every request.
 - The API takes a threshold as a parameter, so the user can choose where to sit on the precision-recall tradeoff
 - I used Pydantic to enforce types and check for exactly 30 features
