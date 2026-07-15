@@ -65,10 +65,10 @@ Therefore, a model could be 99.83% accurate and still be useless.
 
 
 
-###How to run:
-In two terminals
-cd api && uvicorn main:app --reload    # localhost:8000
-cd frontend && npm run dev             # localhost:5173
+### How to run:
+- In two terminals
+- cd api && uvicorn main:app --reload    # localhost:8000
+- cd frontend && npm run dev             # localhost:5173
 
 ## Conclusion
 
