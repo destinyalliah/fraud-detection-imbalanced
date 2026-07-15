@@ -46,6 +46,9 @@ Therefore, a model could be 99.83% accurate and still be useless.
 - The RandomForest model will flag significantly fewer false fraud alarms.
 - This was the case. After running the model, it was determined that it has a precision of 0.96 and recall of 0.74
 
+# FastAPI Backend and React Frontend
+
+
 ## Conclusion
 
 - The most important thing I learned is that there is no single "best" model here.
