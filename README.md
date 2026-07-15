@@ -25,14 +25,14 @@ Therefore, a model could be 99.83% accurate and still be useless.
 [Credit Card Fraud Detection](https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud)
 
 ## My Approach
-- We cannot just use accuracy to judge models. We need metrics that actually care about the rare class, such as precision, recall and F1.
+- I cannot just use accuracy to judge models. I need metrics that actually care about the rare class, such as precision, recall and F1.
 
   ### Analyse existing data
 
 - First, I used a confusion matrix and classification report to analyse the existing data.
-- From the results, we can see that we have achieved a recall score of 0.63. This means that of all of the real fraud cases, the model caught 63% of them
-- From the precision value (0.83), we can determine that out of the cases that the model flagged as fraud, 83% actually were.
-- We need to focus on the recall and the precision-recall tradeoff, instead of the accuracy.
+- From the results, I can see that I have achieved a recall score of 0.63. This means that of all of the real fraud cases, the model caught 63% of them
+- From the precision value (0.83), I can determine that out of the cases that the model flagged as fraud, 83% actually were.
+- I need to focus on the recall and the precision-recall tradeoff, instead of the accuracy.
 
 ### Change the weighting
 
@@ -47,7 +47,7 @@ Therefore, a model could be 99.83% accurate and still be useless.
 
 ### My Prediction and Results
 
-- The RandomForest model will flag significantly fewer false fraud alarms.
+- I predicted that the RandomForest model would flag significantly fewer false fraud alarms.
 - This was the case. After running the model, it was determined that it has a precision of 0.96 and recall of 0.74
 - I plotted a precision-recall tradeoff graph to be able to understand where to mark the threshold at. I concluded that a threshold of 0.3 was best for this model.
 
@@ -82,7 +82,7 @@ Therefore, a model could be 99.83% accurate and still be useless.
 
 ## Limitations and Next Steps
 
-- I tuned the decision threshold using the test set. This is fine for exploring the tradeoff, but it means the test set influenced my choice. In a production setting I would tune the threshold on a separate validation set, and only report final numbers on a truly unseen test set. This means there was data leakage in my results.
+- I tuned the decision threshold using the test set. This is fine for exploring the tradeoff, but it means the test set influenced my choice. In a production setting I would tune the threshold on a separate validation set, and only report final numbers on a truly unseen test set.
 - I chose 0.3 based on the balance it gave, but a real deployment would set the threshold based on the actual cost of each error to the business.
 - I focused on model choice and threshold tuning. A natural next step would be to try SMOTE, which creates synthetic fraud examples to help balance the classes, as another way to handle the imbalance.
 - The dataset features are anonymised (PCA-transformed), so I could not do domain-specific feature engineering. On a real dataset with named features, that could improve results further.
