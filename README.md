@@ -1,5 +1,5 @@
-# fraud-detection-imbalanced
-## Why this project?
+# Credit Card Fraud Detection (Imbalanced ML)
+## Project Overview
 - In this data set from Kaggle, Credit Card Fraud Detection, I looked at the following:
 - Class 0 = 284,315 legitimate transactions
 - Class 1 = 492 fraudulent transactions
@@ -9,6 +9,10 @@ If we decided to build a model that predicts "not fraud" for every transaction, 
 Therefore, a model could be 99.83% accurate and still be useless.
 
 ## Final Results
+### I built an interface using FastAPI and React that allows a user to make fraud detection predictions using the RandomForest model
+<img width="1510" height="703" alt="Screenshot 2026-07-15 at 11 44 09" src="https://github.com/user-attachments/assets/0c95878b-22d3-4200-b205-7c9becb00839" />
+<img width="1472" height="916" alt="image" src="https://github.com/user-attachments/assets/1f21c524-8cd2-419b-948d-abcce4335181" />
+
 | Model | Recall | Precision | Frauds missed | False alarms |
 |-------|--------|-----------|---------------|--------------|
 | Baseline (Logistic Regression) | 0.63 | 0.83 | 36 | 13 |
@@ -45,9 +49,26 @@ Therefore, a model could be 99.83% accurate and still be useless.
 
 - The RandomForest model will flag significantly fewer false fraud alarms.
 - This was the case. After running the model, it was determined that it has a precision of 0.96 and recall of 0.74
+- I plotted a precision-recall tradeoff graph to be able to understand where to mark the threshold at. I concluded that a threshold of 0.3 was best for this model.
+
+<img width="846" height="547" alt="image" src="https://github.com/user-attachments/assets/daba8707-a5f5-4a4c-a739-7686fec66a9d" />
+
 
 # FastAPI Backend and React Frontend
+###Key features:
+- I used an API because the model trains once and gets served, rather than retraining on every request.
+- The API takes a threshold as a parameter, so the user can choose where to sit on the precision-recall tradeoff
+- I used Pydantic to enforce types and check for exactly 30 features
 
+  <img width="2974" height="1826" alt="image" src="https://github.com/user-attachments/assets/c76b4951-4f4f-488a-8897-22bbef2e7917" />
+  <img width="1380" height="1150" alt="image" src="https://github.com/user-attachments/assets/3d32d940-4376-4309-b562-d83a5cb4bc40" />
+
+
+
+###How to run:
+In two terminals
+cd api && uvicorn main:app --reload    # localhost:8000
+cd frontend && npm run dev             # localhost:5173
 
 ## Conclusion
 
@@ -65,5 +86,7 @@ Therefore, a model could be 99.83% accurate and still be useless.
 - I chose 0.3 based on the balance it gave, but a real deployment would set the threshold based on the actual cost of each error to the business.
 - I focused on model choice and threshold tuning. A natural next step would be to try SMOTE, which creates synthetic fraud examples to help balance the classes, as another way to handle the imbalance.
 - The dataset features are anonymised (PCA-transformed), so I could not do domain-specific feature engineering. On a real dataset with named features, that could improve results further.
+- The application only runs locally, and it's not deployed.
+
 
   
